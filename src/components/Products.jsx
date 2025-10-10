@@ -1,96 +1,111 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import './Products.css';
+import React, { useState, useEffect } from "react";
 
-const categories = [
-  { id: 'all', name: 'Todos' },
-  { id: 'industrial', name: 'Industrial' },
-  { id: 'comercial', name: 'Comercial' },
-  { id: 'hogar', name: 'Hogar' },
-];
+const Products = () => {
+  const [productos, setProductos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [marcas, setMarcas] = useState([]);
+  const [colores, setColores] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filtroCategoria, setFiltroCategoria] = useState("");
+  const [filtroMarca, setFiltroMarca] = useState("");
+  const [filtroColor, setFiltroColor] = useState("");
+  const [orden, setOrden] = useState("");
 
-const products = [
-  {
-    id: 1,
-    name: 'Muebles de Cocina',
-    category: 'hogar',
-    imageSrc: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    description: 'Muebles de cocina en acero inoxidable a medida.',
-  },
-  {
-    id: 2,
-    name: 'Equipo Industrial',
-    category: 'industrial',
-    imageSrc: 'https://images.unsplash.com/photo-1581093057427-5375d6b6d1b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    description: 'Equipo industrial en acero inoxidable para procesos alimenticios.',
-  },
-  {
-    id: 3,
-    name: 'Mobiliario Comercial',
-    category: 'comercial',
-    imageSrc: 'https://images.unsplash.com/photo-1578474849013-8ea529355738?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    description: 'Mobiliario en acero inoxidable para restaurantes y comercios.',
-  },
-  {
-    id: 4,
-    name: 'Barandales',
-    category: 'hogar',
-    imageSrc: 'https://images.unsplash.com/photo-1583845112209-5eb9279986f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    description: 'Barandales de acero inoxidable para interiores y exteriores.',
-  },
-];
+  // --- Fetch productos ---
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        const res = await fetch("http://127.0.0.1:8000/api/productos/");
+        const data = await res.json();
+        const items = data.results || data;
+        setProductos(items);
 
-export default function Products() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  
-  const filteredProducts = selectedCategory === 'all' 
-    ? products 
-    : products.filter(product => product.category === selectedCategory);
+        // Filtros dinámicos
+        setCategorias([...new Set(items.map(p => p.categoria_nombre))]);
+        setMarcas([...new Set(items.map(p => p.marca_nombre).filter(Boolean))]);
+        setColores([...new Set(items.map(p => p.color_nombre).filter(Boolean))]);
+      } catch (error) {
+        console.error("Error al obtener productos:", error);
+      }
+    };
+    fetchProductos();
+  }, []);
+
+  // --- Filtrar y ordenar productos ---
+  const productosFiltrados = productos
+    .filter(p => 
+      (!filtroCategoria || p.categoria_nombre === filtroCategoria) &&
+      (!filtroMarca || p.marca_nombre === filtroMarca) &&
+      (!filtroColor || p.color_nombre === filtroColor) &&
+      (!search || p.nombre.toLowerCase().includes(search.toLowerCase()))
+    )
+    .sort((a, b) => {
+      if (orden === "precio") return a.precio - b.precio;
+      if (orden === "-precio") return b.precio - a.precio;
+      if (orden === "nombre") return a.nombre.localeCompare(b.nombre);
+      if (orden === "-nombre") return b.nombre.localeCompare(a.nombre);
+      return 0;
+    });
 
   return (
-    <section className="products section" id="products">
-      <div className="container">
-        <div className="text-center" style={{marginBottom: '32px'}}>
-          <h2 className="title">Nuestros Productos</h2>
-          <p className="sub muted">Descubre nuestra amplia gama de productos en acero inoxidable</p>
-        </div>
+    <div style={{ padding: "2rem" }}>
+      <h1>Catálogo de Productos</h1>
 
-        <div className="categories">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`cat-pill ${selectedCategory === category.id ? 'active' : ''}`}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>
+      {/* Barra de búsqueda */}
+      <input
+        type="text"
+        placeholder="Buscar productos..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{ padding: "0.5rem", width: "100%", marginBottom: "1rem" }}
+      />
 
-        <div className="product-grid">
-          {filteredProducts.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              viewport={{ once: true }}
-              className="product-card shadow rounded"
-            >
-              <div className="product-media">
-                <img src={product.imageSrc} alt={product.name} />
-              </div>
-              <div className="product-body">
-                <h3 className="product-title">{product.name}</h3>
-                <p className="product-desc muted">{product.description}</p>
-                <div className="product-actions">
-                  <a href="/contact" className="btn-link">Solicitar cotización →</a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      {/* Filtros */}
+      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+        <select value={filtroCategoria} onChange={(e) => setFiltroCategoria(e.target.value)}>
+          <option value="">Todas las categorías</option>
+          {categorias.map((cat, i) => <option key={i} value={cat}>{cat}</option>)}
+        </select>
+
+        <select value={filtroMarca} onChange={(e) => setFiltroMarca(e.target.value)}>
+          <option value="">Todas las marcas</option>
+          {marcas.map((marca, i) => <option key={i} value={marca}>{marca}</option>)}
+        </select>
+
+        <select value={filtroColor} onChange={(e) => setFiltroColor(e.target.value)}>
+          <option value="">Todos los colores</option>
+          {colores.map((color, i) => <option key={i} value={color}>{color}</option>)}
+        </select>
+
+        <select value={orden} onChange={(e) => setOrden(e.target.value)}>
+          <option value="">Ordenar por</option>
+          <option value="precio">Precio: menor a mayor</option>
+          <option value="-precio">Precio: mayor a menor</option>
+          <option value="nombre">Nombre: A-Z</option>
+          <option value="-nombre">Nombre: Z-A</option>
+        </select>
       </div>
-    </section>
+
+      {/* Lista de productos */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+        gap: "1rem"
+      }}>
+        {productosFiltrados.length === 0 && <p>No se encontraron productos.</p>}
+        {productosFiltrados.map(prod => (
+          <div key={prod.id} style={{ border: "1px solid #ccc", borderRadius: "8px", padding: "1rem" }}>
+            {prod.imagen && <img src={prod.imagen} alt={prod.nombre} style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "6px" }}/>}
+            <h3>{prod.nombre}</h3>
+            <p>Precio: ${prod.precio}</p>
+            <p>Categoría: {prod.categoria_nombre}</p>
+            {prod.marca_nombre && <p>Marca: {prod.marca_nombre}</p>}
+            {prod.color_nombre && <p>Color: {prod.color_nombre}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
   );
-}
+};
+
+export default Products;
