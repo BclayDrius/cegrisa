@@ -62,7 +62,10 @@ export default function Products() {
                 <p className="product-desc muted">
                   {product.descripcion}
                 </p>
-                <p className="product-price">S/ {product.precio.toFixed(2)}</p>
+
+                {/* 💡 Precio eliminado */}
+                {/* <p className="product-price">S/ {product.precio.toFixed(2)}</p> */}
+
                 <p className="product-meta text-sm text-gray-500">
                   {product.color} • {product.acabado} • {product.forma}
                 </p>
