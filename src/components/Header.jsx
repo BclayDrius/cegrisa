@@ -6,7 +6,7 @@ const navigation = [
   { name: 'Inicio', to: '/' },
   { name: 'Sobre Nosotros', to: '/about' },
   { name: 'Productos', to: '/products' },
-  { name: 'Contacto', to: '/contact' },
+  { name: 'Nuestras Tiendas', to: '/store' },
 ];
 
 export default function Header() {
@@ -16,7 +16,7 @@ export default function Header() {
     <header className="site-header">
       <nav className="nav container" aria-label="Global">
         <div className="brand">
-          <Link to="/" className="logo">CEGRISA</Link>
+          <Link to="/" className="logo">CEGRISA IMPORT</Link>
         </div>
         <button className="nav-toggle" aria-label="Abrir menú" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           <span className="nav-toggle-bar" />

@@ -2,22 +2,23 @@ import './Features.css';
 
 const features = [
   {
-    name: 'Materiales de Calidad',
-    description: 'Utilizamos acero inoxidable de la más alta calidad para garantizar durabilidad y resistencia.',
+    name: 'Amplia Variedad',
+    description: 'Disponemos de cerámicas, mayólicas, grifería y sanitarios para todo tipo de obras y estilos.',
   },
   {
-    name: 'Trabajo Preciso',
-    description: 'Cortes y soldaduras de precisión para un acabado impecable en cada pieza.',
+    name: 'Stock Permanente',
+    description: 'Contamos con disponibilidad constante para abastecer tus proyectos sin demoras.',
   },
   {
-    name: 'Entrega a Tiempo',
-    description: 'Comprometidos con los plazos de entrega acordados con nuestros clientes.',
+    name: 'Asesoría Experta',
+    description: 'Nuestro equipo te orienta en la elección de materiales según tu diseño y presupuesto.',
   },
   {
-    name: 'Garantía',
-    description: 'Todos nuestros productos cuentan con garantía por defectura en materiales y mano de obra.',
+    name: 'Garantía y Confianza',
+    description: 'Todos nuestros productos cuentan con garantía de calidad respaldada por Cegrisa.',
   },
 ];
+
 
 export default function Features() {
   return (
@@ -25,8 +26,10 @@ export default function Features() {
       <div className="container">
         <div className="features-head text-center">
           <h2 className="eyebrow">Sobre Nosotros</h2>
-          <h3 className="title">Soluciones en Acero Inoxidable</h3>
-          <p className="sub muted">Más de 15 años de experiencia ofreciendo productos de acero inoxidable de la más alta calidad para la industria y el hogar.</p>
+         <h3 className="title">Soluciones en Cerámicas y Mayólicas</h3>
+          <p className="sub muted">
+          Más de 5 años ofreciendo calidad, confianza y precios accesibles en revestimientos, sanitarios y accesorios para tu hogar y tus proyectos.
+          </p>
         </div>
         <div className="features-grid">
           {features.map((f) => (

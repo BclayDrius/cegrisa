@@ -29,8 +29,8 @@
 .nav-link { color: #111827; font-weight: 600; }
 .nav-link:hover { color: #374151; }
 
-.nav-cta { background: #16a34a; color: #fff; padding: 8px 12px; border-radius: 6px; font-weight: 700; }
-.nav-cta:hover { background: #15803d; }
+.nav-cta { background: #5b1b16; color: #fff; padding: 8px 12px; border-radius: 6px; font-weight: 700; }
+.nav-cta:hover { background: #5b1b16; }
 
 /* Mobile toggle */
 .nav-toggle { display: none; background: transparent; border: 0; cursor: pointer; }

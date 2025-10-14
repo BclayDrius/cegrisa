@@ -5,14 +5,12 @@ export default function TopBar() {
     <div className="topbar">
       <div className="container topbar-inner">
         <div className="topbar-links">
-          <a href="#">Promociones</a>
-          <span className="sep">|</span>
           <a href="#">Nuestras tiendas</a>
           <span className="sep">|</span>
-          <a href="#">Ayuda</a>
+          <a href="/contact">Ayuda</a>
         </div>
         <div className="topbar-info">
-          <span>Envíos a todo el país</span>
+          <span>Contactanos!</span>
         </div>
       </div>
     </div>

@@ -1,11 +1,143 @@
-.contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; margin-top: 28px; }
-.form { display: grid; gap: 12px; }
-.label { font-size: 14px; font-weight: 600; }
-.info-title { font-size: 18px; font-weight: 700; margin: 0 0 8px; }
-.info-list { display: grid; gap: 10px; margin: 12px 0 16px; }
-.schedule ul { display: grid; gap: 8px; }
-.schedule li { display: flex; justify-content: space-between; }
+/* ===== CONTACT SECTION ===== */
+.contact {
+  background: #fff;
+  padding: 80px 20px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #333;
+}
+
+.text-center {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.sub {
+  color: #666;
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== GRID ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: start;
+}
 
 @media (max-width: 900px) {
-  .contact-grid { grid-template-columns: 1fr; }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ===== FORM ===== */
+.form {
+  display: grid;
+  gap: 16px;
+  background: #fafafa;
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* ===== BUTTON ===== */
+.btn-primary {
+  background: #5b0e08aa;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #5b1b16;
+}
+
+/* ===== INFO ===== */
+.contact-info {
+  background: #fafafa;
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.info-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: #222;
+}
+
+.info-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.info-list a {
+  color: #5b1b16;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.info-list a:hover {
+  text-decoration: underline;
+}
+
+/* ===== SCHEDULE ===== */
+.schedule {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+}
+
+.schedule ul {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.schedule li {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
 }
