@@ -4,10 +4,10 @@ import './Products.css';
 import { productos } from '../data/productos'; // 👈 importa tus datos
 
 const categories = [
-  { id: 'all', name: 'Todos' },
-  { id: 'Baños', name: 'Baños' },
-  { id: 'Cocina', name: 'Cocina' },
-  { id: 'Accesorios', name: 'Accesorios' },
+  { id: 'Porcelanato', name: 'Porcelanato' },
+  { id: 'Mayolica', name: 'Mayolica' },
+  { id: 'Sinterizado', name: 'Sinterizado' },
+  { id: 'Mueble de Baño', name: 'Mueble de Baño' },
 ];
 
 export default function Products() {
