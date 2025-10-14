@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import TopBar from './components/TopBar';
-import PromoBar from './components/PromoBar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -25,7 +24,6 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <TopBar />
-      <PromoBar />
       <Header scrolled={scrolled} />
       <main>
         <Outlet />

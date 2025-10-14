@@ -11,16 +11,13 @@ const navigation = {
   social: [
     {
       name: 'Facebook',
-      href: '#',
+      href: 'https://www.facebook.com/cegrisa.impor/',
     },
     {
       name: 'Instagram',
-      href: '#',
+      href: 'https://www.instagram.com/cegrisaimport/',
     },
-    {
-      name: 'Twitter',
-      href: '#',
-    },
+   
   ],
 };
 
@@ -44,7 +41,7 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <p className="copyright">&copy; {new Date().getFullYear()} CEGRISA. Todos los derechos reservados.</p>
+        <p className="copyright">&copy; {new Date().getFullYear()} CEGRISA IMPORT. Todos los derechos reservados.</p>
       </div>
     </footer>
   );

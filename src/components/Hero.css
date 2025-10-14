@@ -1,12 +1,131 @@
-.hero { background: #ffffff; }
-.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center; }
-.hero-copy { padding: 48px 0; }
-.hero-title { font-size: 40px; font-weight: 800; margin: 8px 0 12px; }
-.hero-sub { font-size: 18px; color: #6b7280; max-width: 560px; }
-.hero-actions { margin-top: 24px; display: flex; gap: 16px; align-items: center; }
-.hero-image img { width: 100%; height: auto; border-radius: 12px; object-fit: cover; }
+/* ======== HERO SECTION ======== */
+.hero {
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
 
+/* Layout principal */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* Texto */
+.hero-copy {
+  padding: 48px 0;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 8px 0 12px;
+  line-height: 1.2;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: #6b7280;
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+/* Botones */
+.hero-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.hero-actions .btn-primary {
+  background: #5b1b16;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.hero-actions .btn-primary:hover {
+  background: #5b1b16;
+  transform: scale(1.03);
+}
+
+.hero-actions .btn-link {
+  color: #5b1b16;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero-actions .btn-link:hover {
+  color: #5b1b16;
+}
+
+/* Imagen dinámica */
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 480px; /* 🔹 Mantiene el mismo tamaño para todas las imágenes */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔹 Evita deformación */
+  object-position: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+  transition: transform 0.6s ease;
+}
+
+.hero-photo:hover {
+  transform: scale(1.02);
+}
+
+/* ======== RESPONSIVE DESIGN ======== */
 @media (max-width: 1024px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-title { font-size: 34px; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-sub {
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-image {
+    height: 360px; /* 🔹 Altura más baja en pantallas medianas */
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-image {
+    height: 280px; /* 🔹 Ajuste para móviles */
+  }
 }
