@@ -82,18 +82,20 @@ export default function Products() {
           ))}
         </div>
 
-        {/* 🎨 Colores */}
-        <div className="subcategories">
-          {colorFilters.map((color) => (
-            <button
-              key={color.id}
-              onClick={() => setSelectedColor(color.id)}
-              className={`sub-pill ${selectedColor === color.id ? 'active' : ''}`}
-            >
-              {color.name}
-            </button>
-          ))}
-        </div>
+        {/* 🎨 Colores: solo mostrar para Mayólica y Sinterizado */}
+        {(selectedCategory === 'Mayolica' || selectedCategory === 'Sinterizado') && (
+          <div className="subcategories">
+            {colorFilters.map((color) => (
+              <button
+                key={color.id}
+                onClick={() => setSelectedColor(color.id)}
+                className={`sub-pill ${selectedColor === color.id ? 'active' : ''}`}
+              >
+                {color.name}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* 🏷️ Productos */}
         <div className="product-grid">

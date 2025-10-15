@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 
 const navigation = [
@@ -28,9 +28,15 @@ export default function Header() {
         </button>
         <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
           {navigation.map((item) => (
-            <Link key={item.name} to={item.to} className="nav-link" onClick={() => setMobileMenuOpen(false)}>
+            <NavLink
+              key={item.name}
+              to={item.to}
+              className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+              end
+            >
               {item.name}
-            </Link>
+            </NavLink>
           ))}
           <Link to="/contact" className="nav-cta" onClick={() => setMobileMenuOpen(false)}>Contacto →</Link>
         </div>
