@@ -16,7 +16,10 @@ export default function Header() {
     <header className="site-header">
       <nav className="nav container" aria-label="Global">
         <div className="brand">
-          <Link to="/" className="logo">CEGRISA IMPORT</Link>
+          <Link to="/" className="logo">
+            <img className="logo-mark" src="/images/logo.png" alt="CEGRISA logotipo" />
+            <img className="logo-wordmark" src="/images/text.png" alt="CEGRISA texto" />
+          </Link>
         </div>
         <button className="nav-toggle" aria-label="Abrir menú" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           <span className="nav-toggle-bar" />
