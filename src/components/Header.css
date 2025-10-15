@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 0;
+  width: 85%;
 }
 
 .brand .logo {
@@ -32,9 +33,33 @@
 .nav-cta { background: #5b1b16; color: #fff; padding: 8px 12px; border-radius: 6px; font-weight: 700; }
 .nav-cta:hover { background: #5b1b16; }
 
-/* Mobile toggle */
 .nav-toggle { display: none; background: transparent; border: 0; cursor: pointer; }
 .nav-toggle-bar { display: block; width: 26px; height: 3px; background: #111827; margin: 5px 0; border-radius: 2px; }
+
+.brand .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand .logo .logo-mark {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.brand .logo .logo-wordmark {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+.logo{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
 @media (max-width: 900px) {
   .nav-toggle { display: inline-block; }
@@ -53,4 +78,7 @@
     box-shadow: 0 10px 25px rgba(0,0,0,.08);
   }
   .nav-links.open { display: flex; }
+  .brand .logo .logo-wordmark { display: none; }
+  .brand .logo .logo-mark { height: 30px; }
 }
+
