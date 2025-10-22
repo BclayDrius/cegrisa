@@ -122,7 +122,7 @@ export default function Contact() {
               <ul>
                 <li><span>Lunes a Viernes</span><strong>8:00 AM - 7:00 PM</strong></li>
                 <li><span>Sábado</span><strong>8:00 AM - 7:00 PM</strong></li>
-                <li><span>Domingo</span><strong>9:00 AM - 3 pm</strong></li>
+                <li><span>Domingo</span><strong>9:00 AM - 2 pm</strong></li>
               </ul>
             </div>
           </div>
