@@ -1,4 +1,5 @@
 import React from "react";
+import "./Documents.css";
 
 export default function Documents() {
   const pdfs = [
@@ -13,43 +14,35 @@ export default function Documents() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6 flex flex-col items-center">
-      <h1 className="text-3xl font-semibold text-gray-800 mb-10 text-center">
-        Catálogos CEGRISA
-      </h1>
+    <div className="documents-container">
+      <h1 className="documents-title">Catálogos CEGRISA</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl">
+      <div className="documents-grid">
         {pdfs.map((pdf, index) => (
-          <div
-            key={index}
-            className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200"
-          >
-            <div className="h-[70vh] w-full bg-gray-100">
+          <div key={index} className="document-card">
+            <div className="document-preview">
               <iframe
                 src={pdf.url}
                 title={pdf.title}
                 className="w-full h-full border-none"
-                allow="fullscreen"
               ></iframe>
             </div>
 
-            <div className="p-4 flex flex-col items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-800 mb-3 text-center">
-                {pdf.title}
-              </h2>
-              <div className="flex gap-3">
+            <div className="document-info">
+              <h2 className="document-title">{pdf.title}</h2>
+              <div className="document-buttons">
                 <a
                   href={pdf.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+                  className="document-btn open"
                 >
-                  Abrir en nueva pestaña
+                  Abrir
                 </a>
                 <a
                   href={pdf.url}
                   download={pdf.title + ".pdf"}
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+                  className="document-btn download"
                 >
                   Descargar
                 </a>
