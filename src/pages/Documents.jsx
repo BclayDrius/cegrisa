@@ -1,17 +1,14 @@
 import React from "react";
 
-// ✅ Documents.jsx
-// Muestra tus catálogos PDF directamente desde el servidor (Vercel)
-
 export default function Documents() {
   const pdfs = [
     {
       title: "CATÁLOGO SANITARIOS CEGRISA",
-      url: "https://cegrisa.vercel.app/catalogo-sanitarios-cegrisa.pdf",
+      url: "/catalogo-sanitarios-cegrisa.pdf",
     },
     {
       title: "CATÁLOGO PORCELANATOS CEGRISA",
-      url: "https://cegrisa.vercel.app/catalogo-porcelanatos-cegrisa.pdf",
+      url: "/catalogo-porcelanatos-cegrisa.pdf",
     },
   ];
 
@@ -51,7 +48,7 @@ export default function Documents() {
                 </a>
                 <a
                   href={pdf.url}
-                  download={pdf.title + '.pdf'}
+                  download={pdf.title + ".pdf"}
                   className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
                 >
                   Descargar
