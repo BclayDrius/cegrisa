@@ -17,36 +17,35 @@ export default function Documents() {
     <div className="documents-container">
       <h1 className="documents-title">Catálogos CEGRISA</h1>
 
-      <div className="documents-grid">
+      <div className="pdf-grid">
         {pdfs.map((pdf, index) => (
-          <div key={index} className="document-card">
-            <div className="document-preview">
+          <div key={index} className="pdf-card">
+            <div className="pdf-viewer-wrapper">
               <iframe
                 src={pdf.url}
                 title={pdf.title}
-                className="w-full h-full border-none"
+                className="pdf-viewer"
+                allow="fullscreen"
               ></iframe>
             </div>
 
-            <div className="document-info">
-              <h2 className="document-title">{pdf.title}</h2>
-              <div className="document-buttons">
-                <a
-                  href={pdf.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="document-btn open"
-                >
-                  Abrir
-                </a>
-                <a
-                  href={pdf.url}
-                  download={pdf.title + ".pdf"}
-                  className="document-btn download"
-                >
-                  Descargar
-                </a>
-              </div>
+            <h2 className="pdf-title">{pdf.title}</h2>
+            <div className="pdf-buttons">
+              <a
+                href={pdf.url}
+                target="_blank"
+                rel="noreferrer"
+                className="pdf-button open"
+              >
+                Abrir
+              </a>
+              <a
+                href={pdf.url}
+                download={pdf.title + ".pdf"}
+                className="pdf-button download"
+              >
+                Descargar
+              </a>
             </div>
           </div>
         ))}
