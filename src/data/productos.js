@@ -123,7 +123,7 @@ export const productos = [
     marca: "",
     color: "Negro",
     dimensiones: "60x60 cm",
-    acabado: "Mate",
+    acabado: "Vitrificado",
     tipo_instalacion: "",
     tipo_descarga: "",
     forma: "Cuadrada",
