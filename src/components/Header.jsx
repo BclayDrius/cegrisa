@@ -7,6 +7,7 @@ const navigation = [
   { name: 'Sobre Nosotros', to: '/about' },
   { name: 'Productos', to: '/products' },
   { name: 'Nuestras Tiendas', to: '/store' },
+  { name: 'Catalogos', to: '/documents' },
 ];
 
 export default function Header() {

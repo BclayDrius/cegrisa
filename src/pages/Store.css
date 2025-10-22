@@ -38,7 +38,7 @@
 }
 
 .store-icon {
-  color: #1d4ed8;
+  color: #5b1b16;
 }
 
 .store-name {
@@ -58,7 +58,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #2563eb;
+  color: #5b1b16;
   font-weight: 500;
   margin-bottom: 16px;
 }

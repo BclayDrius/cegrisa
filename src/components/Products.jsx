@@ -4,10 +4,9 @@ import { productos } from '../data/productos';
 
 const categories = [
   { id: 'all', name: 'Todos' },
-  { id: 'Porcelanato', name: 'Porcelanato' },
-  { id: 'Mayolica', name: 'Mayólica' },
+  { id: 'Porcelanato', name: 'Tablones' },
+  { id: 'Mayolica', name: 'Porcelanato' },
   { id: 'Sinterizado', name: 'Sinterizado' },
-  { id: 'Mueble de Baño', name: 'Mueble de Baño' },
 ];
 
 const colorFilters = [
@@ -17,13 +16,21 @@ const colorFilters = [
   { id: 'Gris', name: 'Gris' },
 ];
 
+// 🔹 Subcategorías que aparecerán cuando se seleccione “Porcelanato” (id: Mayolica)
+const porcelanatoSubcategories = [
+  { id: 'all', name: 'Todos los acabados' },
+  { id: 'Mate', name: 'Mate' },
+  { id: 'Vitrificado', name: 'Vitrificado' },
+  { id: 'Otros', name: 'Otros' },
+];
+
 export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedColor, setSelectedColor] = useState('all');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Número de WhatsApp destino (sin el "+")
-  const phoneNumber = '51973996742';
+  const phoneNumber = '51973996742'; // WhatsApp destino
 
   const handleCotizar = (product) => {
     const message = 
@@ -32,6 +39,7 @@ export default function Products() {
       (product.color ? `Color: ${product.color}\n` : '') +
       (product.acabado ? `Acabado: ${product.acabado}\n` : '') +
       (product.forma ? `Forma: ${product.forma}\n` : '') +
+      (product.dimensiones ? `Dimensiones: ${product.dimensiones}\n` : '') +
       `\n📸 Imagen del producto: ${window.location.origin}${product.imagen}\n\n` +
       `¿Podrían brindarme más información y una cotización, por favor?`;
 
@@ -42,11 +50,15 @@ export default function Products() {
 
   const filteredProducts = productos.filter((p) => {
     const matchesCategory = selectedCategory === 'all' || p.categoria === selectedCategory;
-    const matchesColor = selectedColor === 'all' || p.color?.toLowerCase() === selectedColor.toLowerCase();
+    const matchesColor =
+      selectedColor === 'all' || p.color?.toLowerCase() === selectedColor.toLowerCase();
+    const matchesSubcategory =
+      selectedSubcategory === 'all' || p.acabado?.toLowerCase() === selectedSubcategory.toLowerCase();
     const matchesSearch =
       p.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
       p.descripcion.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesColor && matchesSearch;
+
+    return matchesCategory && matchesColor && matchesSubcategory && matchesSearch;
   });
 
   return (
@@ -74,7 +86,11 @@ export default function Products() {
           {categories.map((category) => (
             <button
               key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
+              onClick={() => {
+                setSelectedCategory(category.id);
+                setSelectedColor('all');
+                setSelectedSubcategory('all');
+              }}
               className={`cat-pill ${selectedCategory === category.id ? 'active' : ''}`}
             >
               {category.name}
@@ -82,8 +98,23 @@ export default function Products() {
           ))}
         </div>
 
-        {/* 🎨 Colores: solo mostrar para Mayólica y Sinterizado */}
-        {(selectedCategory === 'Mayolica' || selectedCategory === 'Sinterizado') && (
+        {/* 🎨 Subcategorías “Mate / Vitrificado” solo cuando el id es Mayolica (Porcelanato visible) */}
+        {selectedCategory === 'Mayolica' && (
+          <div className="subcategories">
+            {porcelanatoSubcategories.map((sub) => (
+              <button
+                key={sub.id}
+                onClick={() => setSelectedSubcategory(sub.id)}
+                className={`sub-pill ${selectedSubcategory === sub.id ? 'active' : ''}`}
+              >
+                {sub.name}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* 🎨 Filtro de colores: solo para Sinterizado */}
+        {selectedCategory === 'Sinterizado' && (
           <div className="subcategories">
             {colorFilters.map((color) => (
               <button
@@ -110,9 +141,12 @@ export default function Products() {
                   <h3>{product.nombre}</h3>
                   <p className="desc">{product.descripcion}</p>
                   <div className="details">
-                    <span>{product.color}</span>
-                    <span>{product.acabado}</span>
-                    <span>{product.forma}</span>
+                    {product.color && <span>{product.color}</span>}
+                    {product.acabado && <span>{product.acabado}</span>}
+                    {product.forma && <span>{product.forma}</span>}
+                    {product.dimensiones && (
+                      <span className="dimensiones">{product.dimensiones}</span>
+                    )}
                   </div>
                   <button
                     onClick={() => handleCotizar(product)}
