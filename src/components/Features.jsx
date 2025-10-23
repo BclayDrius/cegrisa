@@ -28,7 +28,7 @@ export default function Features() {
           <h2 className="eyebrow">Sobre Nosotros</h2>
          <h3 className="title">Soluciones en Cerámicas y Mayólicas</h3>
           <p className="sub muted">
-          Más de 5 años ofreciendo calidad, confianza y precios accesibles en revestimientos, sanitarios y accesorios para tu hogar y tus proyectos.
+          Más de 25 años ofreciendo calidad, confianza y precios accesibles en revestimientos, sanitarios y accesorios para tu hogar y tus proyectos.
           </p>
         </div>
         <div className="features-grid">

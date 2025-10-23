@@ -16,12 +16,12 @@ export default function Hero() {
 
   const [currentImage, setCurrentImage] = useState(0);
 
-  // Cambiar imagen cada 5 segundos de forma aleatoria
+  // Cambia la imagen cada 2 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       const nextIndex = Math.floor(Math.random() * images.length);
       setCurrentImage(nextIndex);
-    }, 5000); // cambia cada 5 segundos
+    }, 2000); // cambia cada 2s
     return () => clearInterval(interval);
   }, []);
 
@@ -33,7 +33,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             <h1 className="hero-title">Cercanos a Ti <br /> Comprometidos con Tu Hogar</h1>
             <p className="hero-sub">
@@ -56,7 +56,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.4 }}
               className="hero-photo"
             />
           </AnimatePresence>
@@ -65,4 +65,5 @@ export default function Hero() {
     </section>
   );
 }
+
 
