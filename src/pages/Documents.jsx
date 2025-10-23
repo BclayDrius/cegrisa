@@ -11,6 +11,11 @@ export default function Documents() {
       title: "CATÁLOGO PORCELANATOS CEGRISA",
       url: "/catalogo-porcelanatos-cegrisa.pdf",
     },
+  
+     {
+      title: "CATALOGO SPC CEGRISA",
+      url: "/spc_cegrisa.pdf",
+    },
   ];
 
   return (
