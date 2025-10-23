@@ -7,13 +7,13 @@ export default function About() {
         <header className="about-header">
           <h1>Sobre Nosotros</h1>
           <p>
-            Más de 5 años ofreciendo calidad, confianza y precios accesibles en cerámicas y mayólicas.
+            Más de 25 años ofreciendo calidad, confianza y precios accesibles en cerámicas y mayólicas.
           </p>
         </header>
 
         <section className="about-intro">
           <p>
-            En <strong>Cegrisa</strong> somos una empresa <strong>persona natural</strong> con cinco años de experiencia en el rubro.
+            En <strong>Cegrisa</strong> somos una empresa <strong>persona natural</strong> con veinticinco años de experiencia en el rubro.
             Nuestro propósito es acercar a las familias y constructores productos de calidad a precios justos,
             brindando una atención cercana que nos diferencia de las grandes cadenas.
           </p>

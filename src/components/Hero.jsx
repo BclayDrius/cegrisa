@@ -37,7 +37,7 @@ export default function Hero() {
           >
             <h1 className="hero-title">Cercanos a Ti <br /> Comprometidos con Tu Hogar</h1>
             <p className="hero-sub">
-              Más de 5 años ofreciendo calidad, confianza y precios accesibles en cerámicas y mayólicas
+              Más de 25 años ofreciendo calidad, confianza y precios accesibles en cerámicas y mayólicas
             </p>
             <div className="hero-actions">
               <a href="/contact" className="btn btn-primary">Solicitar Cotización</a>
